@@ -1,0 +1,16 @@
+SELECT *FROM Student;
+SELECT *FROM Course;
+SELECT *FROM SC;
+
+-- 创建视图
+CREATE VIEW student_course_sc_view AS
+select Student.Sno,Student.Sname,Student.Ssex,Student.Sage,Student.Sdept,Course.Cno,
+       Course.Cname,Course.Ccredit,SC.Grade
+FROM Student,Course,SC
+WHERE Student.Sno=sc.sno and sc.Cno=Course.Cno;
+
+-- 通过视图查询数据
+SELECT *FROM student_course_sc_view;
+
+-- 删除视图
+DROP VIEW student_course_sc_view;		 

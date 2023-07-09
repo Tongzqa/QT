@@ -1,0 +1,15 @@
+
+-- 查询数据表：staff
+select *from staff;
+
+-- 创建索引 
+CREATE INDEX staff_ssalary_index on staff(SSAlary);
+
+-- 查询索引
+SELECT *FROM sqlite_master WHERE type='index';
+
+-- 通过索引查询数据
+SELECT *FROM staff INDEXED BY staff_ssalary_index WHERE SSAlary >=50000;
+
+-- 删除索引
+DROP INDEX staff_ssalary_index;

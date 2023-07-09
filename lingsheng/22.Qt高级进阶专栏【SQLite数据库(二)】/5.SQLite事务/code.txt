@@ -1,0 +1,11 @@
+SELECT * FROM "staff"
+
+-- 事务处理
+BEGIN;
+DELETE FROM staff WHERE SID=15;
+
+-- 事务提交
+COMMIT;
+
+-- 事务回滚
+ROLLBACK;

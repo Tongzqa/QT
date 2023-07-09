@@ -1,0 +1,36 @@
+-- 创建staff员工表对应日志表
+CREATE TABLE staff_log(
+Staff_ID INT NOT NULL,
+Staff_Date TEXT NOT NULL
+);
+
+-- 创建触发器 staff数据表--->监控此表插入记录时间
+CREATE TRIGGER staff_logtrigger AFTER INSERT
+ON Staff
+BEGIN
+	INSERT into staff_log(staff_ID,Staff_Date) VALUES(new.SID,datetime('now'));
+END
+
+-- 查询刚创建触发器：staff_logtrigger
+SELECT name FROM sqlite_master
+where type='trigger';
+
+
+-- 查询数据表：staff
+SELECT *FROM staff;
+SELECT *FROM staff_log;
+
+-- 测试数据
+INSERT into staff VALUES(12,'sunny',40,'账务部','账务专员',8900);
+INSERT into staff VALUES(13,'vico',40,'后勤部','保洁专员',12000);
+
+INSERT into staff VALUES(14,'mark',41,'开发部','高级工程师',50000);
+INSERT into staff VALUES(15,'vico',50,'开发部','系统构架师',55000);
+
+-- 删除触发器
+DROP TRIGGER staff_logtrigger;
+
+
+
+
+

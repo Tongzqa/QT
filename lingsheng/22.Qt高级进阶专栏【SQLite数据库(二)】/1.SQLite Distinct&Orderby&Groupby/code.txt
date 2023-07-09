@@ -1,0 +1,57 @@
+-- 创建员工数据表 staff
+CREATE TABLE staff(
+SID PRIMARY KEY NOT NULL, --员工编号
+SName TEXT NOT NULL, -- 员工姓名
+SAGE INT NOT NULL, -- 员工年龄
+SDEPARTMENT VARCHAR(15), --员工所在部门
+SPOST VARCHAR(10), -- 员工职务
+SSAlary REL -- 员工工资
+);
+
+-- 查询数据表：staff
+SELECT *FROM staff;
+
+-- 插入数据
+INSERT into staff VALUES(1,'andy',29,'开发部','工程师',18000.00);
+INSERT into staff(SID,SName,SAGE,SDEPARTMENT,SPOST,SSAlary)
+       VALUES(2,'allen',30,'开发部','工程师',18000.00);
+			 
+INSERT into staff VALUES(3,'mark',32,'开发部','项目经理',30000.00);
+INSERT into staff VALUES(4,'andy',25,'开发部','系统架构师',50000.00);
+INSERT into staff VALUES(5,'paul',25,'开发部','产品经典',20000.00);
+INSERT into staff VALUES(6,'alis',26,'财务部','会计',9000.00);
+INSERT into staff VALUES(7,'sunny',29,'账务器','出纳',10000.00);
+INSERT into staff VALUES(8,'mark',35,'市场部','产品主管',15000.00);
+INSERT into staff VALUES(9,'kitty',23,'市场部','公关经理',30000.00);
+INSERT into staff VALUES(10,'vico',36,'后勤部','清洁工',12000.00);
+INSERT into staff VALUES(11,'sunny',40,'后勤部','清洁工',12000.00);
+
+
+-- 1：通过distinct关键字，消除重复这个字段
+SELECT DISTINCT SNAME from staff;
+
+
+-- 2:通过order by ASC|DESC,实现升序和降序
+SELECT *FROM staff ORDER BY ssalary; -- 默认为升序
+SELECT *FROM staff ORDER BY ssalary ASC; -- 指定ASC
+SELECT *FROM staff ORDER BY ssalary DESC; -- 降序
+
+
+-- 3：相同数据进行分组
+SELECT SID,SNAME,SAGE,SDEPARTMENT,SPOST,SUM(SSalary)
+FROM staff 
+GROUP BY SNAME ORDER BY SNAME;
+
+-- 4：过滤数据
+SELECT *FROM staff GROUP BY SNAME HAVING COUNT(SNAME)<2  -- 显示姓名少于2个 
+SELECT *FROM staff GROUP BY SNAME HAVING COUNT(SNAME)=2  -- 显示姓名等于2个
+
+
+
+
+
+
+
+
+
+

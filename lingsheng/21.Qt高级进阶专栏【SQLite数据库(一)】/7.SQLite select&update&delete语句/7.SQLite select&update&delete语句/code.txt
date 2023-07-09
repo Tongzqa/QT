@@ -1,0 +1,60 @@
+-- 1：select语句简单使用
+-- 查询student表中所有记录
+SELECT *FROM Student
+
+-- 只查询student表中的：学号、姓名
+SELECT Sno as '学号',Sname as '姓名' FROM Student
+
+-- 2：SQLite 算术运算符
+select 10+20; -- 加法运算
+select 10-20; -- 减法运算
+select 10*20; -- 乘法运算
+select 10/20; -- 除法运算
+select 5%13; -- 取模运算（求余运算）
+select 13%5;
+select 10%5; 
+
+-- 3：SQLite 比较运算符
+SELECT * FROM Student WHERE Sage=19;
+SELECT * FROM Student WHERE Sage>19;
+SELECT * FROM Student WHERE Sage<19;
+
+-- 4:SQLite 逻辑运算符
+SELECT *FROM Student where Sage>=19 and Sage<=21 -- and 测试
+
+SELECT *from Student where Sname LIKE '王%' -- like 测试
+
+SELECT *from Student WHERE Sage in(19 ,18); -- in 测试
+
+SELECT *from Student WHERE Sage not in(19 ,18); -- not in 测试
+
+SELECT *from Student WHERE Sage BETWEEN 22 and 25; -- between  测试
+
+
+-- 5：SQLite表达式
+SELECT *FROM Student where Ssex='女' and Sage=25;
+
+-- 6：SQLite UPDATE语句操作
+UPDATE Student 
+SET Sage=32
+WHERE Sno=1004;
+
+UPDATE Student SET Ssex='女' WHERE Sno=1011;
+
+
+-- 6：SQLite delete语句操作
+DELETE FROM Student where Sno=1001
+
+SELECT *FROM Student
+SELECT *FROM SC
+SELECT *FROM Course
+
+select Student.Sno,Student.Sname,Student.Ssex,Student.Sage,Student.Sdept,SC.Cno,sC.Grade
+FROM Student,SC
+where(Student.Sno = SC.Sno);
+
+
+-- 备注：更新复杂查询参考MySQL查询
+
+
+
